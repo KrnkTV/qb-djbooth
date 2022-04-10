@@ -4,7 +4,18 @@ RegisterNetEvent('qb-djbooth:server:playMusic', function(song, zoneName)
     local src = source
     local ped = GetPlayerPed(src)
     local coords = GetEntityCoords(ped)
-    local boothCoords = Config.Locations[zoneName].coords
+    local boothcoords
+    if Config.Locations[zoneName] then
+        boothCoords = Config.Locations[zoneName].coords
+    else
+        boothCoords = GetEntityCoords(NetworkGetEntityFromNetworkId(zoneName))
+        Config.Locations[zoneName] = {
+        coords = boothCoords,
+        radius = 30.0,
+        playing = false,
+        entity = true,
+        }
+    end
     local dist = #(coords - boothCoords)
     if dist > 3 then return end
     xSound:PlayUrlPos(-1, zoneName, song, Config.DefaultVolume, coords)
@@ -67,4 +78,16 @@ RegisterNetEvent('qb-djbooth:server:changeVolume', function(volume, zoneName)
         xSound:setVolume(-1, zoneName, volume)
     end
     TriggerClientEvent('qb-djbooth:client:playMusic', src)
+end)
+
+CreateThread(function()
+    while true do
+        for k, v in pairs(Config.Locations) do
+            if v.entity and not DoesEntityExist(NetworkGetEntityFromNetworkId(k)) then
+                xSound:Destroy(-1, k)
+                Config.Locations[k] = nil
+            end                          
+        end
+        Wait(2000)
+    end
 end)
