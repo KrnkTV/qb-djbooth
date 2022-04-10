@@ -122,7 +122,7 @@ CreateThread(function()
                         if #(pos - vector3(v.x, v.y, v.z)) < 1.5 then
                             QBCore.Functions.DrawText3D(v.x, v.y, v.z, "~g~E~w~ -  DJ")
                             if IsControlJustReleased(0, 38) then
-                                TriggerEvent('dj:booth')
+                                TriggerEvent('qb-djbooth:client:playMusic')
                             end
                         elseif #(pos - vector3(v.x, v.y, v.z)) < 2.5 then
                             QBCore.Functions.DrawText3D(v.x, v.y, v.z, "DJ")
