@@ -26,8 +26,8 @@ end)
 -- Static Header
 
 RegisterNetEvent('qb-djbooth:client:playMusic', function(data)
-    local hdr = 'ðŸ’¿ | DJ Booth'
-    if data then currentZone = data.netid hdr = 'ðŸ“» Portable Player' end
+    local hdr = '💿 | DJ Booth'
+    if data then currentZone = data.netid hdr = '📻 Portable Player' end
 
     exports['qb-menu']:openMenu({
        {
@@ -36,7 +36,7 @@ RegisterNetEvent('qb-djbooth:client:playMusic', function(data)
 
         },
         {
-            header = 'ðŸŽ¶ | Play a song',
+            header = '🎶 | Play a song',
             txt = 'Enter a youtube URL',
             params = {
                 event = 'qb-djbooth:client:musicMenu',
@@ -46,7 +46,7 @@ RegisterNetEvent('qb-djbooth:client:playMusic', function(data)
             }
         },
         {
-            header = 'â¸ï¸ | Pause Music',
+            header = '⏸️ | Pause Music',
             txt = 'Pause currently playing music',
             params = {
                 isServer = true,
@@ -57,7 +57,7 @@ RegisterNetEvent('qb-djbooth:client:playMusic', function(data)
             }
         },
         {
-            header = 'â–¶ï¸ | Resume Music',
+            header = '▶️ | Resume Music',
             txt = 'Resume playing paused music',
             params = {
                 isServer = true,
@@ -68,7 +68,7 @@ RegisterNetEvent('qb-djbooth:client:playMusic', function(data)
             }
         },
         {
-            header = 'ðŸ”ˆ | Change Volume',
+            header = '🔈 | Change Volume',
             txt = 'Resume playing paused music',
             params = {
                 event = 'qb-djbooth:client:changeVolume',
@@ -78,7 +78,7 @@ RegisterNetEvent('qb-djbooth:client:playMusic', function(data)
             }
         },
         {
-            header = 'âŒ | Turn off music',
+            header = '❌  | Turn off music',
             txt = 'Stop the music & choose a new song',
             params = {
                 isServer = true,
